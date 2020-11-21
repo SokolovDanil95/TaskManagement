@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+    <title>Панель пользователя</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    
+    <link href="css/biblioteka/style-obshii.css" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link href="css/biblioteka/style-12.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="ui-12.html#">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+  </head>
+    <body>
+         <script>
+            function setOnclick(a) {
+            a.setAttribute("onclick","popupWin = window.open(this.href,'contacts','width=820px,height=700px,top=50,left=200px,toolbar=0, location=0, directories=0, menubar=0, scrollbars=0, resizable=0, status=0'); popupWin.focus(); return false");
+            }
+
+            function externalLinks() {
+            var links = document.getElementsByTagName("a");
+              for (i=0; i<links.length; i++) {
+                if (links[i].getAttribute("href") && links[i].getAttribute("rel") == "external") {
+                  setOnclick(links[i])
+                }
+              }
+            }
+            window.onload = externalLinks;
+          </script>
+          
+        <div class="site-wrapper">
+
+            <!--меню шапки -->
+            <th:block th:include="/menu/menu_header"></th:block>  
+            
+            
+            <div class="row">
+                
+                
+                <!--Боковое меню-->    
+                <th:block th:include="/menu/menu_rights"></th:block>
+                
+                
+                <div class="col-10">
+                    
+                    <br>
+                    <form action="/newTask">
+                        <button class="btn btn-outline-secondary" type="submit">Создать задачу</button>
+                    </form>
+                    <br>
+                    
+                    
+                    
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#naznach" role="tab" aria-controls="naznach" aria-selected="true">Назначенные вам</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#closeTask" role="tab" aria-controls="closeTask" aria-selected="false">Закрытые</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#myTask" role="tab" aria-controls="myTask" aria-selected="false">Ваши заявки</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="naznach" role="tabpanel" aria-labelledby="naznach-tab">
+                            <!-- UI X -->
+                            <div class="ui-12">
+                                <div class="container">
+                                    <!-- UI Content -->
+                                    <div class="ui-content" th:each ="TaskTabList: ${TaskListIspolnitel}">
+                                        <!-- Ui head -->
+                                        <div class="ui-head bg-orange">
+                                                <!-- Heading -->
+                                                <h2 th:utext="${TaskTabList.idtask.name}">...</h2>
+                                        </div>
+                                        <!-- UI Body -->
+                                        <div class="ui-body br-orange">
+                                                <div class="row">
+                                                        <div class="col-md-6 col-sm-6">
+                                                                <!-- UI Feature -->
+                                                                <div class="ui-feature">
+                                                                        <!-- Heading -->
+                                                                        <h3 th:utext="${TaskTabList.idtask.typetask.name}">...</h3>
+                                                                        <ul class="list-unstyled">
+                                                                            <li> &nbsp;
+                                                                                <b>Дата создания - </b><var th:utext="${TaskTabList.idtask.startdate}"></var> 
+                                                                                <b>Выполнить до - </b><var th:utext="${TaskTabList.idtask.modeldate}"></var>
+                                                                            </li>
+                                                                            <li> &nbsp;<b>Постановщик - </b><var th:utext="${TaskTabList.idtask.directortask.userName}"></var></li>
+                                                                            <li> &nbsp;<b>Cостояние: </b><var th:utext="${TaskTabList.idtask.state.name}"></var></li>
+                                                                        </ul>
+                                                                        <a rel="external" th:href="@{/detailedTaskPage(id=${TaskTabList.idtask.id})}"  class="btn btn-orange">Открыть</a> &nbsp; 
+                                                                        
+                                                                        <a th:href="@{/deleteTask(id=${TaskTabList.idtask.id})}"  class="btn btn-white">Удалить</a>
+                                                                </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6">
+                                                                <!-- UI Description -->
+                                                                <div class="ui-description">
+                                                                        <h3>Описание:</h3>
+                                                                        <p th:utext="${TaskTabList.idtask.description}">...</p>
+                                                                </div>
+                                                        </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                          <div class="tab-pane fade" id="closeTask" role="tabpanel" aria-labelledby="closeTask-tab">
+                              <!-- UI X -->
+                            <div class="ui-12">
+                                <div class="container">
+                                    <!-- UI Content -->
+                                    <div class="ui-content" th:each ="TaskListClose: ${TaskListClose}">
+                                        <!-- Ui head -->
+                                        <div class="ui-head bg-green">
+                                                <!-- Heading -->
+                                                <h2 th:utext="${TaskListClose.idtask.name}">...</h2>
+                                        </div>
+                                        <!-- UI Body -->
+                                        <div class="ui-body br-green">
+                                                <div class="row">
+                                                        <div class="col-md-6 col-sm-6">
+                                                                <!-- UI Feature -->
+                                                                <div class="ui-feature">
+                                                                        <!-- Heading -->
+                                                                        <h3 th:utext="${TaskListClose.idtask.typetask.name}">...</h3>
+                                                                        <ul class="list-unstyled">
+                                                                            <li> &nbsp;
+                                                                                <b>Дата создания - </b><var th:utext="${TaskListClose.idtask.startdate}"></var> 
+                                                                                <b>Закрыто - </b><var th:utext="${TaskListClose.idtask.enddate}"></var>
+                                                                            </li>
+                                                                            <li> &nbsp;<b>Постановщик - </b><var th:utext="${TaskListClose.idtask.directortask.userName}"></var></li>
+                                                                            <li> &nbsp;<b>Cостояние: </b><var th:utext="${TaskListClose.idtask.state.name}"></var></li>
+                                                                        </ul>
+                                                                        <a rel="external" th:href="@{/detailedTaskPage(id=${TaskListClose.idtask.id})}"  class="btn btn-green">Открыть</a> &nbsp; 
+                                                                        <a th:href="@{/deleteTask(id=${TaskListClose.idtask.id})}"  class="btn btn-white">Удалить</a>
+                                                                </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6">
+                                                                <!-- UI Description -->
+                                                                <div class="ui-description">
+                                                                        <h3>Описание:</h3>
+                                                                        <p th:utext="${TaskListClose.idtask.description}">...</p>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                          </div>
+                        <div class="tab-pane fade" id="myTask" role="tabpanel" aria-labelledby="myTask-tab">
+                             <!-- UI X -->
+                            <div class="ui-12">
+                                <div class="container">
+                                    <!-- UI Content -->
+                                    <div class="ui-content" th:each ="TaskListDirect: ${TaskListDirect}">
+                                        <!-- Ui head -->
+                                        <div class="ui-head bg-lblue">
+                                                <!-- Heading -->
+                                                <h2 th:utext="${TaskListDirect.name}">...</h2>
+                                        </div>
+                                        <!-- UI Body -->
+                                        <div class="ui-body br-lblue">
+                                                <div class="row">
+                                                        <div class="col-md-6 col-sm-6">
+                                                                <!-- UI Feature -->
+                                                                <div class="ui-feature">
+                                                                        <!-- Heading -->
+                                                                        <h3 th:utext="${TaskListDirect.typetask.name}">...</h3>
+                                                                        <ul class="list-unstyled">
+                                                                            <li> &nbsp;
+                                                                                <b>Дата создания - </b><var th:utext="${TaskListDirect.startdate}"></var> 
+                                                                                <b>Закрыто - </b><var th:utext="${TaskListDirect.enddate}"></var>
+                                                                            </li>
+                                                                            <li> &nbsp;<b>Испольнитель - </b>                                    
+                                                                                <th:block th:each="user : ${TaskListDirect.taskUserCollection}">
+                                                                                    <p th:utext="${user.iduser.userName}">..</p>
+                                                                                </th:block>
+                                                                            </li>
+                                                                            <li> &nbsp;<b>Оценка: </b><var th:utext="${TaskListDirect.evaluation}"></var></li>
+                                                                        </ul>
+                                                                        <a rel="external" th:href="@{/detailedTaskPage(id=${TaskListDirect.id})}"  class="btn btn-lblue">Открыть</a> &nbsp; 
+                                                                        <a rel="external" th:href="@{/ChangeTask(id=${TaskListDirect.id})}"  class="btn btn-primary">Изменить</a> &nbsp;
+                                                                        <a th:href="@{/deleteTask(id=${TaskListDirect.id})}"  class="btn btn-white">Удалить</a>
+                                                                </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6">
+                                                                <!-- UI Description -->
+                                                                <div class="ui-description">
+                                                                        <h3>Описание:</h3>
+                                                                        <p th:utext="${TaskListDirect.description}">...</p>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                      </div>
+                    <!--<h2>User Info Page</h2>
+                    <h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
+                    <b>This is protected page!</b>  
+                    <br/><br/>
+                    <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+                    <div th:if="${provRole != null}" th:utext="${provRole}"></div>
+                    -->
+                </div>       
+            </div>   
+        </div>
+        
+        
+    </body>
+</html>

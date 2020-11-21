@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Проекты</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+    <!-- Main CSS -->
+    <link href="css/biblioteka/style-81.css" rel="stylesheet">
+    <link href="css/biblioteka/style-obshii.css" rel="stylesheet">
+    
+  </head>
+    <body>
+         <script>
+            function setOnclick(a) {
+            a.setAttribute("onclick","popupWin = window.open(this.href,'contacts','width=820px,height=700px,top=50,left=200px,toolbar=0, location=0, directories=0, menubar=0, scrollbars=0, resizable=0, status=0'); popupWin.focus(); return false");
+            }
+
+            function externalLinks() {
+            var links = document.getElementsByTagName("a");
+              for (i=0; i<links.length; i++) {
+                if (links[i].getAttribute("href") && links[i].getAttribute("rel") == "external") {
+                  setOnclick(links[i])
+                }
+              }
+            }
+            window.onload = externalLinks;
+          </script>
+          
+        <div class="site-wrapper">
+
+            <!--меню шапки -->
+            <th:block th:include="/menu/menu_header"></th:block>  
+            
+            
+            <div class="row obshi_cont">
+                
+                <!--Боковое меню-->    
+                <th:block th:include="/menu/menu_rights"></th:block>  
+                
+                
+                <div class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-10 content">
+                    
+                    <br>
+                    <form action="/newProjectPage">
+                        <button class="btn btn-outline-secondary" type="submit">Создать Проект</button>
+                    </form>
+                    <br>
+                     <div class="form-group row">
+                        <!-- UI - X Starts -->
+                        <div class="ui-81" th:each ="project: ${project}">
+                            <div class="container">
+                                <div class="row">
+                                    <div class=" col-mob" > 
+                                        <!-- Main Item Starts -->
+                                       <div class="ui-item">
+
+                                           <!-- User Details Starts -->
+                                           <div class="ui-user clearfix">
+                                               <!-- User Image -->
+                                               <a href="ui-81.html#"><img src="img/ui-81/1.jpg" alt="" class="img-responsive" /></a>
+                                               <!-- UserName And Designation -->	
+                                               <h2>
+                                                   <a href="ui-81.html#" th:utext="${project.name}"></a> 
+                                                   <span th:utext="${project.idsost.name}"></span>
+                                               </h2>
+                                           </div>
+                                           <!-- User Details Ends -->
+
+                                           <!-- Skills Starts -->
+                                           <div class="ui-skills">
+                                               <div class="row">
+                                                   <div class="col-md-6 col-sm-6 col-xs-6 col-mob">	
+                                                       <!-- Item -->
+                                                       <div class="uis-item">
+                                                           <!-- Heading -->
+                                                           <h4>Выполнение: <label th:utext="${project.readiness}+'%'"></label></h4>
+                                                           <!-- Progress -->
+               
+                                                           <div class="progress">
+                                                                   <!-- Progress Bar -->
+                                                                   <div class="progress-bar bg-yellow" role="progressbar" th:aria-valuenow="${project.readiness}" aria-valuemin="0" aria-valuemax="100" th:style="'width:'+${project.readiness}+'%;'"></div>
+                                                                   
+                                                           </div>
+
+                                                           <br/>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <!-- Skills Ends -->
+
+                                           <!-- Details Starts -->
+                                           <div class="ui-details">
+                                                <label for="exampleFormControlSelect1"><small>Время выдачи: </small><small th:utext="${project.daterun}">....</small></label>
+                                                <label for="exampleFormControlSelect1"><small>Выполнить до: </small><small th:utext="${project.dateend}">.....</small></label>
+                                                   <!-- Paragraph -->
+                                               <p th:utext="${project.description}"></p>
+                                           </div>
+                                           <!-- Details Ends -->
+
+                                           <!-- Social Media Starts -->
+                                           <div class="ui-social">
+                                               <!-- Facebook -->
+                                               <a rel="external" th:href="@{/detailedProjectPage(id=${project.id})}" class="ui-tootltip" data-toggle="tooltip" data-placement="top">Открыть</a>
+                                               <!-- Twitter -->
+                                               <a href="ui-81.html#" class="ui-tootltip" data-toggle="tooltip" data-placement="top">Удалить</a>
+                                           </div>
+                                           <!-- Social Media Starts -->
+
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>       
+            </div>   
+        </div>
+        
+        
+    </body>
+</html>

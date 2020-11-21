@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Проект</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    
+    <link href="css/biblioteka/style-curc.css" rel="stylesheet">
+    <link href="css/biblioteka/style-obshii.css" rel="stylesheet">
+     <link href="css/biblioteka/font-awesome.min.css" rel="stylesheet">
+    
+    <style type="text/css">
+        body {
+            position: relative;
+          }
+    </style>
+    
+  </head>
+    <body>
+        <script>
+        var myWindow;
+        function myWindowClose(){ 
+            if (myWindow) { 
+              myWindow.close();
+              myWindow = null;
+            }
+          }
+          $('body').scrollspy({ target: '#navbar-example' })
+        </script>
+        <div class="site-wrapper">
+            
+            <div class="row obshi_cont">
+                <div class="col-1"></div>
+                <div class="col-10 content" id="example3">
+                    <h2 th:utext="${projectvibor.name}"></h2>
+                    <h6 th:utext="${projectvibor.description}"></h6>
+                    
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#EtapInf" role="tab" aria-controls="EtapInf" aria-selected="true">Этапы проекта</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#userProect" role="tab" aria-controls="userProect" aria-selected="false">Участники</a>
+                        </li>
+                      </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="EtapInf" role="tabpanel" aria-labelledby="EtapInf-tab">
+                          
+                            <div class="row">
+                                <div class="col-2">
+                                    <a th:href="@{/newStagePage(id=${projectvibor.id})}">
+                                        <svg class="bi bi-plus-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                                            <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+                                            <path fill-rule="evenodd" d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </a>
+                                      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">              
+                                        <a th:each ="StagesProectOne: ${StagesProectOne}" th:utext="${StagesProectOne.name}" class="nav-link active" th:id="'v-pills-'+${StagesProectOne.id}+'-tab'" data-toggle="pill" th:href="'#v-pills-'+${StagesProectOne.id}" role="tab" th:aria-controls="'v-pills-'+${StagesProectOne.id}" aria-selected="true">...</a>
+                                        <a th:each ="StagesProectOst: ${StagesProectOst}" th:utext="${StagesProectOst.name}" class="nav-link" th:id="'v-pills-'+${StagesProectOst.id}+'-tab'" data-toggle="pill" th:href="'#v-pills-'+${StagesProectOst.id}" role="tab" th:aria-controls="'v-pills-'+${StagesProectOst.id}" aria-selected="false">...</a>
+                                    </div>
+                                </div>
+                                <div class="col-10">
+                                    
+                                    <div class="tab-content" id="v-pills-tabContent">
+      
+                                        <div th:each ="StagesProectOne: ${StagesProectOne}" class="tab-pane fade show active" th:id="'v-pills-'+${StagesProectOne.id}" role="tabpanel" th:aria-labelledby="'v-pills-'+${StagesProectOne.id}+'-tab'">
+                                           <h5 th:utext="${StagesProectOne.description}"></h5>
+                                           <br>
+                                           <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <form action="/newTaskInProjectStagePage">
+                                                        <button class="btn btn-outline-secondary" th:value="${StagesProectOne.id}" name="id" id="id"  type="submit">Создать задачу</button>
+                                                    </form>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <form action="/LinkStageTaskPage">
+                                                        <button class="btn btn-outline-secondary" th:value="${StagesProectOne.id}" name="id" id="id"  type="submit">Добавить задачу</button>
+                                                    </form>
+                                                </div>
+                                           </div>
+                                            <br>
+                                            
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <!-- Table heading -->
+                                                    <tr>
+                                                        <th style="width: 10%"></th>
+                                                        <th style="width: 20%">Время</th>
+                                                        <th style="width: 50%">Описание</th>
+                                                        <th style="width: 10%"></th>
+                                                        <th style="width: 10%"></th>
+                                                    </tr>
+                                                    <tr th:each ="task: ${StagesProectOne.linkStageProectCollection}">
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <a rel="external" th:href="@{/detailedTaskPage(id=${task.idtask.id})}" class="btn btn-white btn-xs"><i class="fa fa-external-link"></i></a>
+                                                            </div>
+                                                        </td>
+                                                        <div th:if="${task.idtask.enddate}">
+                                                        <td th:utext="${task.idtask.startdate}+' - '+${task.idtask.enddate}">....
+                                                        </td>
+                                                        </div>
+                                                        <div th:unless="${task.idtask.enddate}">
+                                                        <td th:utext="${task.idtask.startdate}+' - '+${task.idtask.modeldate}">....</td>
+                                                        </div>
+                                                        <td>
+                                                            <!-- Heading -->
+                                                            <h4 th:utext="${task.idtask.name}">...</h4>
+                                                            <!-- Para -->
+                                                            <p th:utext="${task.idtask.description}"></p>
+                                                        </td>
+                                                         <td>
+                                                           <a href="ui-142.html#" class="ui-circle bg-yellow" th:utext="${task.idtask.evaluation}"></a>
+                                                        </td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <a th:href="@{/deleteTask(id=${task.idtask.id})}" class="btn btn-white btn-xs"><i class="fa fa-times"></i></a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div th:each ="StagesProectOst: ${StagesProectOst}" class="tab-pane fade" th:id="'v-pills-'+${StagesProectOst.id}" role="tabpanel" th:aria-labelledby="'v-pills-'+${StagesProectOst.id}+'-tab'">
+                                           <h5 th:utext="${StagesProectOst.description}"></h5>
+                                           <br>
+                                           <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <form action="/newTaskInProjectStagePage">
+                                                        <button class="btn btn-outline-secondary" th:value="${StagesProectOst.id}" name="id" id="id"  type="submit">Создать задачу</button>
+                                                    </form>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <form action="/LinkStageTaskPage">
+                                                        <button class="btn btn-outline-secondary" th:value="${StagesProectOst.id}" name="id" id="id" type="submit">Добавить задачу</button>
+                                                    </form>
+                                                </div>
+                                           </div>
+                                            <br>
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <!-- Table heading -->
+                                                    <tr>
+                                                        <th style="width: 10%"></th>
+                                                        <th style="width: 20%">Время</th>
+                                                        <th style="width: 50%">Описание</th>
+                                                        <th style="width: 10%"></th>
+                                                        <th style="width: 10%"></th>
+                                                    </tr>
+                                                    <tr th:each ="task: ${StagesProectOst.linkStageProectCollection}">
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <a rel="external" th:href="@{/detailedTaskPage(id=${task.idtask.id})}" class="btn btn-white btn-xs"><i class="fa fa-external-link"></i></a>
+                                                            </div>
+                                                        </td>
+                                                        <div th:if="${task.idtask.enddate}">
+                                                        <td th:utext="${task.idtask.startdate}+' - '+${task.idtask.enddate}">....
+                                                        </td>
+                                                        </div>
+                                                        <div th:unless="${task.idtask.enddate}">
+                                                        <td th:utext="${task.idtask.startdate}+' - '+${task.idtask.modeldate}">....</td>
+                                                        </div>
+                                                        <td>
+                                                            <!-- Heading -->
+                                                            <h4 th:utext="${task.idtask.name}">...</h4>
+                                                            <!-- Para -->
+                                                            <p th:utext="${task.idtask.description}"></p>
+                                                        </td>
+                                                         <td>
+                                                           <a href="ui-142.html#" class="ui-circle bg-yellow" th:utext="${task.idtask.evaluation}"></a>
+                                                        </td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <a th:href="@{/deleteTask(id=${task.idtask.id})}" class="btn btn-white btn-xs"><i class="fa fa-times"></i></a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="userProect" role="tabpanel" aria-labelledby="userProect-tab">
+                            <div th:each ="userProect: ${projectvibor.usersProectCollection}" >
+                                <h6 th:utext="${userProect.idposition.name} + ' - '" ></h6>
+                                <p th:utext="${userProect.iduser.userName}">...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div> 
+                <div class="col-1"></div>
+            </div> 
+        </div>
+        
+
+    </body>
+</html>

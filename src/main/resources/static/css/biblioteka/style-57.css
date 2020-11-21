@@ -1,0 +1,62 @@
+/************************
+Designed by : http://responsivewebinc.com
+************************/
+/* UI X */
+.ui-57{
+	margin:100px auto;
+}
+.ui-57 .ui-item{
+	max-width:280px;
+	height:200px;
+	margin:20px auto;
+	color:#fff;
+	padding:20px;
+	position: relative;
+	box-shadow:inset 0px 4px 3px 0px rgba(0,0,0,0.1);
+}
+.ui-57 .ui-item:before,
+.ui-57 .ui-item:after {
+	z-index: -1;
+	position: absolute;
+	content: "";
+	bottom: 15px;
+	left: 10px;
+	width: 50%;
+	top: 50%;
+	max-width: 300px;
+	background: rgba(0, 0, 0, 0.2);
+	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
+	-webkit-transform: rotate(-3deg);
+	-moz-transform: rotate(-3deg);
+	-o-transform: rotate(-3deg);
+	-ms-transform: rotate(-3deg);
+	transform: rotate(-3deg);
+}
+.ui-57 .ui-item:after {
+	-webkit-transform: rotate(3deg);
+	-moz-transform: rotate(3deg);
+	-o-transform: rotate(3deg);
+	-ms-transform: rotate(3deg);
+	transform: rotate(3deg);
+	right: 10px;
+	left: auto;
+}
+.ui-57 .ui-item > i{
+	font-size:40px;
+	position:absolute;
+	color:#fff;
+	top:-19px;
+	left:10px;
+	text-shadow:0px 0px 1px rgba(0,0,0,0.6);
+}
+.ui-57 .ui-item h2{
+	color:#fff;
+	font-size:25px;
+	line-height:35px;
+	font-weight:400;
+	margin-bottom:5px;
+}
+.ui-57 .ui-item p{
+	font-size:15px;
+	line-height:28px;
+}

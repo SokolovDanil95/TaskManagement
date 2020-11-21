@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Информирование пользователя</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style_index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/user_panel.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/photo_user.css"/>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+    <!-- Main CSS -->
+    <link href="css/biblioteka/style-315.css" rel="stylesheet">
+    <link href="css/biblioteka/style-obshii.css" rel="stylesheet">
+    <link href="css/biblioteka/font-awesome.min.css" rel="stylesheet">
+    
+  </head>
+    <body>
+         <script>
+            function setOnclick(a) {
+            a.setAttribute("onclick","popupWin = window.open(this.href,'contacts','width=820px,height=700px,top=50,left=200px,toolbar=0, location=0, directories=0, menubar=0, scrollbars=0, resizable=0, status=0'); popupWin.focus(); return false");
+            }
+
+            function externalLinks() {
+            var links = document.getElementsByTagName("a");
+              for (i=0; i<links.length; i++) {
+                if (links[i].getAttribute("href") && links[i].getAttribute("rel") == "external") {
+                  setOnclick(links[i])
+                }
+              }
+            }
+            window.onload = externalLinks;
+          </script>
+          
+        <div class="site-wrapper">
+
+            <!--меню шапки -->
+            <th:block th:include="/menu/menu_header"></th:block>  
+            
+            
+            <div class="row obshi_cont">
+                
+                <!--Боковое меню-->    
+                <th:block th:include="/menu/menu_rights"></th:block>  
+                
+                
+                <div class="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-10 content">
+                    
+                    <br>
+                    <form action="/DelVseInfComUser"> 
+                        <button class="btn btn-outline-secondary" type="submit">Убрать все</button>
+                    </form>
+                    
+                    <!-- Widget head starts -->
+                    <div class="w-head">						
+                            <!-- Heading -->
+                            <h3 class="pull-left"> Оповещение </h3>
+
+                            <!-- Icons, Links and Buttons -->
+                            <div class="pull-right">								
+                                    <div class="w-links dropdown">
+                                            <!-- Close button -->
+                                            <a th:href="@{/DelVseInfComUser}" class="w-close"><i class="fa fa-close"></i></a>
+
+                                    </div>								
+                            </div>							
+                            <div class="clearfix"></div>
+                    </div>
+                    <!-- Widget head ends -->
+
+                    <!-- Widget body starts -->
+                    <div class="w-body support-widget" th:each ="detailedInformComrnt: ${detailedInformComrnt}">
+
+                            <!-- Ticket starts -->
+                            <div class="sticket">
+                                    <!-- Ticket image -->
+                                    <!--<div class="sticket-img text-center">
+                                            <a href="ui-315.html#"><img src="img/ui-315/1.jpg" alt="" class="img-responsive" /></a>
+                                    </div> -->
+                                    <!-- Ticket details -->
+                                    <div class="sticket-details">
+                                            <h4><a th:href="@{/detailedTaskPage(id=${detailedInformComrnt.idtask.idtask.id})}" th:utext="${detailedInformComrnt.idtask.idtask.name}">....</a> 
+                                                <span class="label label-red" th:utext="${detailedInformComrnt.text}">Open</span>
+                                            </h4>
+                                            <p th:utext="${detailedInformComrnt.idtask.usercoment.userName}+': '+${detailedInformComrnt.idtask.textcoment}" >..</p>
+                                           
+                                            <!-- Buttons -->
+                                            <div class="btn-group">
+                                                    <a th:href="@{/detailedTaskPage(id=${detailedInformComrnt.idtask.idtask.id})}" class="btn btn-white btn-xs"><i class="fa fa-external-link"></i></a>
+                                                    <a th:href="@{/delInformUserComent(id=${detailedInformComrnt.id})}" class="btn btn-white btn-xs"><i class="fa fa-times"></i></a>
+                                            </div>
+                                    </div>
+                                    <hr />
+                            </div>
+                            <div class="clearfix"></div>
+                            <!-- Ticket ends -->
+                    </div>
+                    <!-- Widget body ends -->
+            <!-- Widget ends -->
+                </div>       
+            </div>   
+        </div>
+        
+        
+    </body>
+</html>

@@ -1,0 +1,21 @@
+/************************
+Designed by : http://responsivewebinc.com
+************************/
+/* General CSS */
+
+/* UI - X */
+/* Circle */
+ a.ui-circle{
+	display:block;
+	width:40px;
+	height:40px;
+	
+	top:20px;
+	right:20px;
+	border-radius:100%;
+	color:#fff;
+	line-height:40px;
+	text-align:center;
+	font-weight:600;
+	font-size:15px;
+}

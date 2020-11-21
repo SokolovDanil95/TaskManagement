@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Закрытие задачи</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style_index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/user_panel.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/photo_user.css"/>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    
+  </head>
+    <body>
+        <div class="site-wrapper">
+            
+            <div class="row obshi_cont">
+                <div class="col-2"></div>
+                <div class="col-8 content">
+                    <br>
+                    <form action="/saveClosedTask" method='POST'> 
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Состояние:</label>
+                            <select class="form-control" id="SostTask" name="SostTask">
+                              <option th:each ="StateTask: ${StateTask}" th:utext="${StateTask.name}" th:value="${StateTask.id}">....</option>
+                            </select>
+                        </div>                         
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Оценка:</label>
+                            <input class="form-control" id="inputEvaluation" placeholder="Оценка (0 - 1)" name="inputEvaluation">
+                        </div>
+                        
+                        <a href="javascript:history.go(-1)" class="btn btn-secondary">Отмена</a>
+                        <button  class="btn btn-outline-secondary" th:value="${idTask}" name="id" id="id" type="submit">Закрыть</button>
+                    </form>
+                </div>   
+                <div class="col-2"></div>
+            </div>   
+        </div>
+        
+        
+    </body>
+</html>

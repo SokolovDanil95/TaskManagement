@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ru.oktpp_tuskoktpp_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>ru.oktpp.tuskoktpp.entity.Tasktab</class>
+    <class>ru.oktpp.tuskoktpp.entity.TaskUser</class>
+    <class>ru.oktpp.tuskoktpp.entity.Statetask</class>
+    <class>ru.oktpp.tuskoktpp.entity.Typetask</class>
+    <class>ru.oktpp.tuskoktpp.entity.ComentTask</class>
+    <class>ru.oktpp.tuskoktpp.entity.InformUserComent</class>
+    <class>ru.oktpp.tuskoktpp.entity.Proect</class>
+    <class>ru.oktpp.tuskoktpp.entity.LinkStageProect</class>
+    <class>ru.oktpp.tuskoktpp.entity.AppUser_sdsd</class>
+    <class>ru.oktpp.tuskoktpp.entity.ProjectPositions</class>
+    <class>ru.oktpp.tuskoktpp.entity.UsersProect</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/taskoktpp"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="Zx12345"/>
+    </properties>
+  </persistence-unit>
+</persistence>

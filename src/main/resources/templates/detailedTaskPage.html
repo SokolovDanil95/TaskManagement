@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Детали задачу</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    
+    <link href="css/biblioteka/style-obshii.css" rel="stylesheet">
+    
+    <link href="css/biblioteka/style-109.css" rel="stylesheet">
+    
+    <link href="css/biblioteka/style-254.css" rel="stylesheet">
+    
+    <link href="css/biblioteka/font-awesome.min.css" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    
+     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    
+  </head>
+    <body>
+        <script>
+        var myWindow;
+        function myWindowClose(){ 
+            if (myWindow) { 
+              myWindow.close();
+              myWindow = null;
+            }
+          }
+        </script>
+        <div class="site-wrapper">
+            
+            <div class="row obshi_cont">
+                <div class="col-1"></div>
+                <div class="col-6 content" id="example3">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#obshaiInf" role="tab" aria-controls="obshaiInf" aria-selected="true">Общая информация</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#istorTask" role="tab" aria-controls="istorTask" aria-selected="false">История</a>
+                        </li>
+                      </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="obshaiInf" role="tabpanel" aria-labelledby="obshaiInf-tab">
+                            
+                            <!-- Letter Head Starts -->
+                            <div class="container">
+                                    <div class="letter-head" id="textTask">
+                                            <!-- Letter Head -->
+                                            <div class="letter-top" id="napechat">
+                                                    <!-- Logo -->
+                                                    <div class="logo">
+                                                        <h1><a href="ui-109.html#"><i class="fa fa-laptop lblue"></i><th:block th:utext="${detailedTask.name}"></th:block></a></h1>
+                                                    </div>
+                                                    <!-- Letter Head Contact -->
+                                                    <div class="letter-head-content"> 
+                                                            <p><i th:utext="${detailedTask.typetask.name}" class="fa orange"></i> &nbsp; </p>
+                                                            <p><i class="fa"></i><th:block  th:utext="${detailedTask.state.name}"></th:block> &nbsp; </p>
+                                                    </div>
+                                                    <!-- Clearfix -->
+                                                    <div class="clearfix"></div>
+                                            </div>
+                                            <br />
+                                            <hr />
+                                            <br />
+                                            <!-- Letter Body -->
+                                            <div class="letter-body">
+
+                                                    <!-- Invoice Body -->
+                                                    <div class="invoice-content">
+                                                        <strong>Номер: &nbsp; <span class="orange">#</span><th:block  th:utext="${detailedTask.id}"></th:block></strong><br/> 
+                                                        <strong class="pull-right bold">Дата постановки : <th:block  th:utext="${detailedTask.startdate}"></th:block></strong><br/>
+                                                        <strong class="pull-right bold">Выполнить до : <th:block  th:utext="${detailedTask.modeldate}"></th:block></strong>
+                                                        <div class="clearfix"></div>
+                                                        <br />
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <!-- Address One -->
+                                                                <div class="address">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-sm-6">
+                                                                            <!-- Address -->
+                                                                            <p>
+                                                                                <strong >Постановщик:</strong><br/>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-sm-6">
+                                                                            <!-- Phone, email and website -->
+                                                                            <p>
+                                                                                <i class="fa fa-phone lblue"></i> &nbsp; <th:block  th:utext="${detailedTask.directortask.userName}"></th:block><br/>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <!-- Address Two -->
+                                                                <div class="address">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-sm-6">
+                                                                                <!-- Address -->
+                                                                                <p>
+                                                                                    <strong>Исполнитель</strong><br/>
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-sm-6">
+                                                                            <!-- Phone, Email and Website -->
+                                                                            <p><i class="fa fa-phone lblue"></i> &nbsp; 
+                                                                                <th:block th:each="user : ${detailedTask.taskUserCollection}" th:utext="${user.iduser.userName}"> 
+                                                                                </th:block>
+                                                                                <br/>     
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br />
+                                                        <!-- Heading -->
+                                                        <h6>Описание задачи:</h6>
+                                                        <!-- Paragraph -->
+                                                        <p th:utext="${detailedTask.description}"></p>
+                                                        <br />
+                                                        <!-- Table Responsive starts -->
+                                                        <div class="table-responsive">
+                                                            <h6>Входит в проект:</h6>
+                                                            <!-- Table -->
+                                                            <table class="table table-hover">
+                                                                    <tr>
+                                                                            <th>№</th>
+                                                                            <th>Нименование</th>
+                                                                            <th>Описание</th>
+                                                                            <th>Выполнение</th>
+                                                                    </tr>
+                                                                    <tr th:each="LinkStageTask: ${detailedTask.linkStageProectCollection}">
+                                                                            <td th:utext="${LinkStageTask.idstage.idproect.id}"></td>
+                                                                            <td th:utext="${LinkStageTask.idstage.idproect.name}"></td>
+                                                                            <td th:utext="${LinkStageTask.idstage.idproect.description}"></td>
+                                                                            <td th:utext="${LinkStageTask.idstage.idproect.readiness}"></td>
+                                                                    </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <br/>
+                                            <!-- Foot Left Side -->
+                                            <div class="foot-lside">
+                                                    Дата закрытия:<br />
+                                                    <th:block  th:utext="${detailedTask.enddate}"></th:block>
+                                            </div>
+                                            <!-- Foot Right Side -->
+                                            <div class="foot-rside">
+                                                <th:block  th:utext="${detailedTask.directortask.userName}"></th:block>
+                                                <br/>
+                                                __________________________
+                                            </div>
+                                            <!-- Clearfix -->
+                                            <div class="clearfix"></div>
+                                            <br/>
+                                            <hr />
+                                            <!-- Footer -->
+                                            <div class="letter-foot">
+                                                    <div class="row">
+                                                        <p>Задача в отделе ОАКТПП. Распечатонную копию должен подписать постановщик задачи!</p>
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </div>
+                            <!-- Print button -->
+                            <div class="print-btn text-center">
+                                    <a href="ui-109.html#" class="btn btn-orange" id="print-button" onclick="myFunction()">Печать</a>
+                            </div>
+                            <div class="form-row"> 
+                                <div class="form-group col-md-6">
+                                    <button onClick='self.close()' class="btn btn-outline-secondary">Закрыть окно</button>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <form action="/closedTask">
+                                        <button th:value="${detailedTask.id}" name="id" id="id" class="btn btn-outline-secondary" type="submit">Закрыть заявку</button>
+                                    </form>
+                                </div>
+                            </div>  
+                            <br />
+                            <script type="text/javascript">
+                                    function myFunction() {
+                                            var printButton = document.getElementById("print-button");
+                                            printButton.style.visibility = 'hidden';
+                                            window.print();
+                                            printButton.style.visibility = 'visible';
+                                    }
+                            </script>
+                        </div>
+                        <div class="tab-pane fade" id="istorTask" role="tabpanel" aria-labelledby="istorTask-tab">
+                                <table class="table table-sm">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Дата</th>
+                                    <th scope="col">Описание</th>
+                                    <th scope="col">Пользователь</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr th:each ="istorComent: ${istorComent}">
+                                    <td th:utext="${istorComent.datecoment}">...</td>
+                                    <td th:utext="${istorComent.textcoment}">...</td>
+                                    <td th:utext="${istorComent.usercoment.userName}">...</td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                      </div>  
+                </div>   
+                <div class="col-4"> 
+                   <!-- UI # -->
+                    <div class="ui-254">
+                            <!-- Profile window -->
+                            <div class="ui-window">
+                                    <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                    <h3><i class="fa fa-comments-o orange"></i>&nbsp; Коментарии:</h3>
+                                                    <!-- Profile chat content -->
+                                                    <div class="chat-content">
+                                                            <!-- Chat box -->
+                                                            
+                                                            <th:block  th:each ="conttask: ${conttask}">
+                                                            
+                                                            <div class="chat-box chat-out">
+                                                                    <div class="message">
+                                                                            <!-- Name -->
+                                                                            <h5>
+                                                                                <p>
+                                                                                    <b th:utext="${conttask.usercoment.userName}"></b>
+                                                                                    <i class="fa fa-clock-o"></i>&nbsp;
+                                                                                    <th:block  th:utext="${conttask.datecoment}"></th:block>
+                                                                                    <a th:href="@{/detailedComentTask(id=${detailedTask.id},idComent=${conttask.id})}"><i class="fa fa-trash-o red"></i></a>
+                                                                                </p>
+                                                                            </h5>
+                                                                            <p th:utext="${conttask.textcoment}"></p>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                            </div>
+                                                            </th:block>
+                                                    </div>
+                                                    <!-- Chatting message input box -->
+                                                    <form action="/saveComentPage" method='POST'>
+                                                        <div class="chat-input-box">
+                                                            <div class="input-group">
+                                                                <input type="text" id="exampleTextarea"  name="exampleTextarea" class="form-control" placeholder="Введите коментарий">
+                                                                <span class="input-group-btn">
+                                                                        <button class="btn btn-orange" th:value="${detailedTask.id}" name="id" id="id" type="submit">Опубликовать</button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </form>    
+                                                    
+                                            </div>
+                                    </div>
+                            </div>
+
+                    </div>
+
+                    <!-- Javascript files -->
+                    <!-- jQuery -->
+                    <script src="js/jquery.js"></script>
+                    <!-- Bootstrap JS -->
+                    <script src="js/bootstrap.min.js"></script>
+                    <!-- Nicescroll -->
+                    <script src="js/jquery.nicescroll.min.js"></script>
+                    <!-- Placeholder JS -->
+                    <script src="js/placeholder.js"></script>
+                    <!-- Respond JS for IE8 -->
+                    <script src="js/respond.min.js"></script>
+                    <!-- HTML5 Support for IE -->
+                    <script src="js/html5shiv.js"></script>
+                    <script>
+                            /* Scroll bar JS */
+
+                            $(".chat-contact").niceScroll({
+                                    cursorcolor:"#999",
+                                    cursoropacitymin:0,
+                                    cursoropacitymax:0.3,
+                                    cursorwidth:5,
+                                    cursorborder:"0px",
+                                    cursorborderradius:"0px",
+                                    cursorminheight:50,
+                                    zindex:1,
+                                    mousescrollstep:20
+                            });
+
+                            $(".chat-content").niceScroll({
+                                    cursorcolor:"#999",
+                                    cursoropacitymin:0,
+                                    cursoropacitymax:0.3,
+                                    cursorwidth:5,
+                                    cursorborder:"0px",
+                                    cursorborderradius:"0px",
+                                    cursorminheight:50,
+                                    zindex:1,
+                                    mousescrollstep:20
+                            });
+
+                    </script>
+                </div>
+                <div class="col-1"></div>
+            </div> 
+        </div>   
+    </body>
+</html>

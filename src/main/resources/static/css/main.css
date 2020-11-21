@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21.06.2018, 19:55:28
+    Author     : Danil
+*/
+
+.navbar{
+  
+}
+
+.navbar .nav-link, .navbar-brand{
+    color: #434345;
+    cursor: pointer;
+}
+
+.navbar .nav-link{
+    margin-right: 2em !important;
+    padding: .25rem 0;
+    font-weight: bold;
+    color: #434345;
+    background-color: transparent;
+    border-bottom: .25rem solid transparent;
+}
+
+.navbar .nav-link:hover{
+    color: #F97300;
+    border-bottom-color: #F97300;
+}
+.navbar .nav-item:hover{
+    color: #F97300;
+}
+
+.navbar .navbar-collapse{
+    justify-content: flex-end;
+}
+

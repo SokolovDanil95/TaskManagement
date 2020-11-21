@@ -1,0 +1,122 @@
+/************************
+Designed by : http://responsivewebinc.com
+************************/
+/* General CSS */
+
+/* UI - X */
+.ui-81{
+	margin:60px 0px;
+        width: 350px;
+}
+/* Column Mobile */
+@media(max-width: 500px){
+	.ui-81 .col-mob{
+		width:100%;
+	}
+}
+/* Main Item */
+.ui-81 .ui-item{
+	width: 300px;
+	border:1px solid #eee;
+	box-shadow:2px 2px 0px 1px rgba(0,0,0,0.07);
+	border-radius:4px;
+	background:#fff;
+	margin:20px auto;
+}
+/* User Details */
+.ui-81 .ui-item .ui-user{
+	padding:15px;
+	border-bottom:1px solid #eee;
+}
+/* User Image */
+.ui-81 .ui-item .ui-user a > img{
+	width:45px;
+	border-radius:100%;
+	float:left;
+}
+/* User Name */
+.ui-81 .ui-item .ui-user h2{
+	font-size:15px;
+	line-height:21px;
+	margin-left:62px;
+}
+/* Designation */
+.ui-81 .ui-item .ui-user h2 span{
+	display:block;
+	font-size:13px;
+	line-height:21px;
+	color:#aaa;
+	font-weight:400;
+	text-transform:lowercase;
+}
+/* Skills */
+.ui-81 .ui-item .ui-skills{
+	padding:8px 20px 0px;
+	background:#fcfcfc;
+	border-bottom:1px solid #eee;
+}
+/* Column Mobile */
+@media(max-width: 600px) and (min-width: 500px){
+	.ui-81 .ui-item .ui-skills .col-mob{
+		width:100%;
+	}
+}
+@media(max-width: 500px){
+	.ui-81 .ui-item .ui-skills .col-mob{
+		width:50%;
+	}
+}
+@media(max-width: 300px){
+	.ui-81 .ui-item .ui-skills .col-mob{
+		width:100%;
+	}
+}
+/* Skills Item */
+.ui-81 .ui-item .ui-skills .uis-item{
+	max-width:246px;
+}
+/* Heading */
+.ui-81 .ui-item .ui-skills .uis-item h4{
+	font-size:13px;
+	line-height:23px;
+	margin:0px 0px 2px;
+}
+/* Progress */
+.ui-81 .ui-item .ui-skills .uis-item .progress{
+	height:5px;
+}
+/* Progress Bar */
+.ui-81 .ui-item .ui-skills .uis-item .progress-bar{
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+/* Details */
+.ui-81 .ui-item .ui-details{
+	padding:10px 15px 12px;
+	border-bottom:1px solid #eee;
+}
+/* Paragraph */
+.ui-81 .ui-item .ui-details p{
+	margin:0px;
+	color:#8a8a8a;
+	font-size:13px;
+	line-height:28px;
+}
+/* Social Media */
+.ui-81 .ui-social{
+	padding:15px;
+	background:#fcfcfc;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+}
+/* Icon */
+.ui-81 .ui-social a > i{
+	width:28px;
+	height:28px;
+	border-radius:100%;
+	line-height:28px;
+	color:#fff;
+	text-align:center;
+	margin:0px 2px;
+}
